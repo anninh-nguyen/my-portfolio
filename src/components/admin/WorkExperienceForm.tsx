@@ -5,7 +5,7 @@ import { useWorkExperience } from "@/hooks/usePortfolioData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Trash2 } from "lucide-react";
@@ -93,7 +93,7 @@ export default function WorkExperienceForm({ userId }: Props) {
           <Checkbox id="is_current" checked={form.is_current} onCheckedChange={(v) => set("is_current", !!v)} />
           <Label htmlFor="is_current" className="text-xs">Currently working here</Label>
         </div>
-        <div className="space-y-1"><Label className="text-xs">Description</Label><Textarea rows={2} value={form.description} onChange={(e) => set("description", e.target.value)} /></div>
+        <div className="space-y-1"><Label className="text-xs">Description</Label><RichTextEditor value={form.description} onChange={(v) => set("description", v)} /></div>
         <div className="flex gap-2">
           <Button size="sm" type="button" onClick={save}><Plus className="mr-1 h-3.5 w-3.5" />{editId ? "Update" : "Add"}</Button>
           {editId && <Button size="sm" variant="outline" type="button" onClick={() => { setForm(empty); setEditId(null); }}>Cancel</Button>}

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useProfile } from "@/hooks/usePortfolioData";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { RichTextEditor } from "@/components/ui/rich-text-editor";
 import { useToast } from "@/hooks/use-toast";
 
 interface Props { userId: string; }
@@ -49,7 +49,11 @@ export default function ProfileForm({ userId }: Props) {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
         <Field label="Full Name"><Input {...form.register("full_name")} /></Field>
         <Field label="Title / Tagline"><Input {...form.register("title")} /></Field>
-        <Field label="Bio"><Textarea rows={3} {...form.register("bio")} /></Field>
+        <Field label="Bio">
+          <Controller control={form.control} name="bio" render={({ field }) => (
+            <RichTextEditor value={field.value} onChange={field.onChange} />
+          )} />
+        </Field>
         <div className="grid grid-cols-2 gap-3">
           <Field label="Email"><Input {...form.register("email")} /></Field>
           <Field label="Phone"><Input {...form.register("phone")} /></Field>
