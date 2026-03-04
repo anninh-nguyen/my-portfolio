@@ -40,7 +40,7 @@ const Index = () => {
         <section className="mb-8">
           <h1 className="text-3xl font-bold text-foreground">{profile.full_name || "Your Name"}</h1>
           {profile.title && <p className="mt-1 text-lg text-muted-foreground">{profile.title}</p>}
-          {profile.bio && <p className="mt-3 text-sm leading-relaxed text-foreground/80">{profile.bio}</p>}
+          {profile.bio && <div className="mt-3 prose prose-sm max-w-none text-foreground/80" dangerouslySetInnerHTML={{ __html: profile.bio }} />}
         </section>
 
         {/* Contact */}
@@ -105,7 +105,7 @@ const Index = () => {
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">{exp.company}</p>
-                    {exp.description && <p className="mt-1 text-xs leading-relaxed text-foreground/70">{exp.description}</p>}
+                    {exp.description && <div className="mt-1 prose prose-xs max-w-none text-foreground/70" dangerouslySetInnerHTML={{ __html: exp.description }} />}
                   </div>
                 ))}
               </div>
