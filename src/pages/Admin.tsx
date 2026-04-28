@@ -9,6 +9,7 @@ import ProfileForm from "@/components/admin/ProfileForm";
 import WorkExperienceForm from "@/components/admin/WorkExperienceForm";
 import EducationForm from "@/components/admin/EducationForm";
 import HobbiesForm from "@/components/admin/HobbiesForm";
+import MessagesList from "@/components/admin/MessagesList";
 
 const Admin = () => {
   const { user, loading, signOut } = useAuth();
@@ -44,6 +45,8 @@ const Admin = () => {
         <EducationForm userId={user.id} />
         <Separator className="my-8" />
         <HobbiesForm userId={user.id} />
+        <Separator className="my-8" />
+        <MessagesList />
       </div>
     </div>
   );
