@@ -1,5 +1,5 @@
 import { useProfile, useWorkExperience, useEducation, useHobbies } from "@/hooks/usePortfolioData";
-import { Mail, Phone, MapPin, Linkedin, Github, Globe, Briefcase, GraduationCap, Award, Heart } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Github, Globe, Briefcase, GraduationCap, Award, Heart, Share2 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 
@@ -44,7 +44,7 @@ const Index = () => {
         </section>
 
         {/* Contact */}
-        {(profile.email || profile.phone || profile.location || profile.linkedin_url || profile.github_url || profile.website_url) && (
+        {(profile.email || profile.phone || profile.location || profile.website_url) && (
           <>
             <Separator className="my-6" />
             <section className="mb-8">
@@ -65,6 +65,25 @@ const Index = () => {
                     <MapPin className="h-3.5 w-3.5" /> {profile.location}
                   </span>
                 )}
+                {profile.website_url && (
+                  <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
+                    <Globe className="h-3.5 w-3.5" /> Website
+                  </a>
+                )}
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* Social */}
+        {(profile.linkedin_url || profile.github_url) && (
+          <>
+            <Separator className="my-6" />
+            <section className="mb-8">
+              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                <Share2 className="h-3.5 w-3.5" /> Social
+              </h2>
+              <div className="flex flex-wrap gap-4 text-sm text-foreground/80">
                 {profile.linkedin_url && (
                   <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
                     <Linkedin className="h-3.5 w-3.5" /> LinkedIn
@@ -73,11 +92,6 @@ const Index = () => {
                 {profile.github_url && (
                   <a href={profile.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
                     <Github className="h-3.5 w-3.5" /> GitHub
-                  </a>
-                )}
-                {profile.website_url && (
-                  <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
-                    <Globe className="h-3.5 w-3.5" /> Website
                   </a>
                 )}
               </div>
