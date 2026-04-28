@@ -27,7 +27,8 @@ export default function ContactForm() {
       return;
     }
     setSubmitting(true);
-    const { error } = await supabase.from("contact_messages").insert([parsed.data]);
+    const { name, email, message } = parsed.data;
+    const { error } = await supabase.from("contact_messages").insert([{ name: name!, email: email!, message: message! }]);
     setSubmitting(false);
     if (error) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
