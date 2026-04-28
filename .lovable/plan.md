@@ -1,59 +1,30 @@
-# Personal Portfolio — Implementation Plan
+# Separate Social Links from Contact
 
 ## Overview
 
-A clean, light-themed single-page portfolio website with a protected admin area for editing your personal data, backed by Supabase.
+On the public portfolio page, split LinkedIn and GitHub out of the Contact section into a dedicated "Social" section. Website URL stays in Contact (since it's a personal site, not a social profile).
 
----
+## Changes
 
-## Public Portfolio Page (Single Scrollable Page)
+### `src/pages/Index.tsx`
 
-### Hero / Bio Section
+- **Contact section**: Keep only Email, Phone, Location, and Website. Update the conditional render check accordingly.
+- **New Social section**: Added directly after Contact, shown only if LinkedIn or GitHub is set.
+  - Heading: "Social" with a small icon (e.g. `Share2` from lucide-react)
+  - Renders LinkedIn and GitHub links with their existing icons, using the same flex-wrap layout and styling as Contact.
+  - Wrapped in a `<Separator />` for visual consistency with other sections.
 
-- Your name, title/tagline, and a short bio paragraph
-- Optional profile photo
+No database, admin form, or schema changes — both fields already exist on the profile and are edited in `ProfileForm.tsx`.
 
-### Contact Info
+## Result
 
-- Display email, phone, location, and social links (LinkedIn, GitHub, etc.)
-
-### Work Experience
-
-- Timeline-style list showing job title, company, date range, and description
-- Ordered by most recent first
-
-### Education & Certificates
-
-- Degrees with institution, field, and graduation year
-- Certificates with issuer and date
-
-### Hobbies
-
-- Simple list of hobbies with optional icons
-
----
-
-## Admin Area (Login Required)
-
-- **Login page** at `/login` with email/password (single admin account)
-- **Dashboard** at `/admin` to edit all sections:
-  - Bio & contact info form
-  - Add/edit/delete work experience entries
-  - Add/edit/delete education & certificate entries
-  - Add/edit/delete hobbies
-- Changes save to Supabase and reflect immediately on the public page
-
----
-
-## Database (Supabase)
-
-Tables: `profile` (bio, contact info), `work_experience`, `education`, `hobbies` — all linked to the authenticated user and protected with Row-Level Security.
-
----
-
-## Design
-
-- Light, minimal theme with lots of white space
-- Compact layout — no unnecessary padding
-- Subtle section dividers, clean typography
-- Responsive for mobile and desktop
+```text
+Hero / Bio
+─────────
+Contact         → Email · Phone · Location · Website
+─────────
+Social          → LinkedIn · GitHub
+─────────
+Experience
+...
+```
