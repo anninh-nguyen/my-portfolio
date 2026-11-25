@@ -9,6 +9,8 @@ import ProfileForm from "@/components/admin/ProfileForm";
 import WorkExperienceForm from "@/components/admin/WorkExperienceForm";
 import EducationForm from "@/components/admin/EducationForm";
 import HobbiesForm from "@/components/admin/HobbiesForm";
+import PortfoliosForm from "@/components/admin/PortfoliosForm";
+import ProjectsForm from "@/components/admin/ProjectsForm";
 import MessagesList from "@/components/admin/MessagesList";
 
 const Admin = () => {
@@ -45,6 +47,10 @@ const Admin = () => {
         <EducationForm userId={user.id} />
         <Separator className="my-8" />
         <HobbiesForm userId={user.id} />
+        <Separator className="my-8" />
+        <PortfoliosForm userId={user.id} />
+        <Separator className="my-8" />
+        <ProjectsForm userId={user.id} />
         <Separator className="my-8" />
         <MessagesList />
       </div>

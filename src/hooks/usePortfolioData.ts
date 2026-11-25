@@ -44,3 +44,25 @@ export function useHobbies() {
     },
   });
 }
+
+export function usePortfolios() {
+  return useQuery({
+    queryKey: ["portfolios"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("portfolios").select("*").order("sort_order", { ascending: true });
+      if (error) throw error;
+      return data ?? [];
+    },
+  });
+}
+
+export function useProjects() {
+  return useQuery({
+    queryKey: ["projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase.from("projects").select("*").order("sort_order", { ascending: true });
+      if (error) throw error;
+      return data ?? [];
+    },
+  });
+}

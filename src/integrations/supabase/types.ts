@@ -113,6 +113,36 @@ export type Database = {
         }
         Relationships: []
       }
+      portfolios: {
+        Row: {
+          created_at: string
+          description: string
+          id: string
+          name: string
+          sort_order: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          sort_order?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          id?: string
+          name?: string
+          sort_order?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profile: {
         Row: {
           avatar_url: string
@@ -163,6 +193,65 @@ export type Database = {
           website_url?: string
         }
         Relationships: []
+      }
+      projects: {
+        Row: {
+          achievements: string
+          client_location: string
+          completed_date: string | null
+          created_at: string
+          description: string
+          id: string
+          image_url: string
+          portfolio_id: string | null
+          role: string
+          sort_order: number
+          technologies: string
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          achievements?: string
+          client_location?: string
+          completed_date?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          portfolio_id?: string | null
+          role?: string
+          sort_order?: number
+          technologies?: string
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          achievements?: string
+          client_location?: string
+          completed_date?: string | null
+          created_at?: string
+          description?: string
+          id?: string
+          image_url?: string
+          portfolio_id?: string | null
+          role?: string
+          sort_order?: number
+          technologies?: string
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_portfolio_id_fkey"
+            columns: ["portfolio_id"]
+            isOneToOne: false
+            referencedRelation: "portfolios"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       work_experience: {
         Row: {
