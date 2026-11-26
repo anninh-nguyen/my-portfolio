@@ -12,7 +12,7 @@ export default function SiteHeader() {
     );
   return (
     <header>
-      <div className="relative h-40 w-full overflow-hidden bg-gradient-to-r from-secondary via-muted to-accent sm:h-56">
+      <div className="relative aspect-[4/1] w-full overflow-hidden bg-gradient-to-r from-secondary via-muted to-accent">
         {cover && <img src={cover} alt="Cover" className="h-full w-full object-cover" />}
       </div>
       <nav className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
