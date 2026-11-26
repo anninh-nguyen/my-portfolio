@@ -15,20 +15,20 @@ interface Props { userId: string; }
 interface FormData {
   full_name: string; title: string; bio: string;
   email: string; phone: string; location: string;
-  linkedin_url: string; github_url: string; website_url: string; avatar_url: string;
+  linkedin_url: string; github_url: string; website_url: string; avatar_url: string; cover_url: string;
 }
 
 export default function ProfileForm({ userId }: Props) {
   const { data: profile } = useProfile();
   const { toast } = useToast();
   const qc = useQueryClient();
-  const form = useForm<FormData>({ defaultValues: { full_name: "", title: "", bio: "", email: "", phone: "", location: "", linkedin_url: "", github_url: "", website_url: "", avatar_url: "" } });
+  const form = useForm<FormData>({ defaultValues: { full_name: "", title: "", bio: "", email: "", phone: "", location: "", linkedin_url: "", github_url: "", website_url: "", avatar_url: "", cover_url: "" } });
 
   useEffect(() => {
     if (profile) form.reset({
       full_name: profile.full_name, title: profile.title, bio: profile.bio,
       email: profile.email, phone: profile.phone, location: profile.location,
-      linkedin_url: profile.linkedin_url, github_url: profile.github_url, website_url: profile.website_url, avatar_url: profile.avatar_url,
+      linkedin_url: profile.linkedin_url, github_url: profile.github_url, website_url: profile.website_url, avatar_url: profile.avatar_url, cover_url: profile.cover_url ?? "",
     });
   }, [profile, form]);
 
@@ -48,9 +48,9 @@ export default function ProfileForm({ userId }: Props) {
     <section>
       <h2 className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">Profile & Contact</h2>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
-        <Field label="Avatar">
-          <Controller control={form.control} name="avatar_url" render={({ field }) => (
-            <ImageUpload userId={userId} folder="avatar" value={field.value} onChange={field.onChange} rounded />
+        <Field label="Cover image">
+          <Controller control={form.control} name="cover_url" render={({ field }) => (
+            <ImageUpload userId={userId} folder="cover" value={field.value} onChange={field.onChange} />
           )} />
         </Field>
         <Field label="Full Name"><Input {...form.register("full_name")} /></Field>

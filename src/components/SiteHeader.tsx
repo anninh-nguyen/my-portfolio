@@ -4,17 +4,23 @@ import { cn } from "@/lib/utils";
 
 export default function SiteHeader() {
   const { data: profile } = useProfile();
-  const link = ({ isActive }: { isActive: boolean }) =>
-    cn("text-sm transition-colors hover:text-primary", isActive ? "font-semibold text-primary" : "text-muted-foreground");
+  const cover = (profile as { cover_url?: string } | undefined)?.cover_url;
+  const tab = ({ isActive }: { isActive: boolean }) =>
+    cn(
+      "-mb-px border-b-2 px-4 py-2.5 text-sm transition-colors",
+      isActive ? "border-primary font-semibold text-primary" : "border-transparent text-muted-foreground hover:text-foreground"
+    );
   return (
-    <header className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-4xl items-center justify-between px-4 py-3">
-        <span className="text-sm font-semibold text-foreground">{profile?.full_name || "Portfolio"}</span>
-        <nav className="flex gap-5">
-          <NavLink to="/" end className={link}>Profile</NavLink>
-          <NavLink to="/portfolio" className={link}>Portfolio</NavLink>
-        </nav>
+    <header>
+      <div className="relative h-40 w-full overflow-hidden bg-gradient-to-r from-secondary via-muted to-accent sm:h-56">
+        {cover && <img src={cover} alt="Cover" className="h-full w-full object-cover" />}
       </div>
+      <nav className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
+        <div className="mx-auto flex max-w-4xl px-4">
+          <NavLink to="/" end className={tab}>Profile</NavLink>
+          <NavLink to="/portfolio" className={tab}>Portfolio</NavLink>
+        </div>
+      </nav>
     </header>
   );
 }

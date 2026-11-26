@@ -15,6 +15,13 @@
       "when": 1795636186229,
       "tag": "0001_tighten_messages_and_media",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1795674571514,
+      "tag": "0002_add_profile_cover",
+      "breakpoints": true
     }
   ]
 }

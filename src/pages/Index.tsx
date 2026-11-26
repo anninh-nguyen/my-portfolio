@@ -41,14 +41,11 @@ const Index = () => {
       <div className="mx-auto max-w-2xl px-4 py-10">
         {/* Hero / Bio */}
         <section className="mb-8">
-          <div className="flex items-end justify-between gap-4">
+          <div>
             <div className="min-w-0">
               <h1 className="text-3xl font-bold text-foreground">{profile.full_name || "Your Name"}</h1>
               {profile.title && <p className="mt-1 text-lg leading-tight text-muted-foreground">{profile.title}</p>}
             </div>
-            {profile.avatar_url && (
-              <img src={profile.avatar_url} alt={profile.full_name} className="h-20 w-20 shrink-0 rounded-full border border-border object-cover" />
-            )}
           </div>
           {profile.bio && <div className="mt-3 prose prose-sm max-w-none text-foreground/80" dangerouslySetInnerHTML={{ __html: profile.bio }} />}
         </section>
