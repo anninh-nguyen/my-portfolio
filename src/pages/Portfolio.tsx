@@ -7,7 +7,7 @@ function ProjectCard({ p }: { p: Tables<"projects"> }) {
     <article className="flex flex-col overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <div className="flex-1 p-4">
         <div className="flex items-start justify-between gap-3">
-          <h3 className="text-base font-semibold uppercase leading-snug tracking-wide text-primary">{p.title}</h3>
+          <h3 className="text-base font-semibold uppercase leading-snug tracking-wide text-heading">{p.title}</h3>
           {p.image_url && <img src={p.image_url} alt={p.title} className="h-16 w-16 shrink-0 rounded object-cover" />}
         </div>
         {(p.role || p.client_location) && (
@@ -49,12 +49,12 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-4xl px-4 py-8">
-        <h1 className="mb-6 text-2xl font-bold text-foreground">Portfolio</h1>
+        <h1 className="mb-6 text-2xl font-bold text-heading">Portfolio</h1>
         {isLoading ? <p className="text-muted-foreground">Loading…</p> : groups.length === 0 ? (
           <p className="text-muted-foreground">No projects yet.</p>
         ) : groups.map((g) => (
           <section key={g.id} className="mb-10">
-            {g.name && <h2 className="mb-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">{g.name}</h2>}
+            {g.name && <h2 className="mb-1 text-xs font-semibold uppercase tracking-wider text-heading">{g.name}</h2>}
             {g.description && <p className="mb-3 text-sm text-foreground/70">{g.description}</p>}
             <div className="mt-3 grid gap-4 md:grid-cols-2">
               {g.items.map((p) => <ProjectCard key={p.id} p={p} />)}

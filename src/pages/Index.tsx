@@ -26,7 +26,7 @@ const Index = () => {
     return (
       <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
-          <h1 className="mb-2 text-2xl font-bold text-foreground">No portfolio yet</h1>
+          <h1 className="mb-2 text-2xl font-bold text-heading">No portfolio yet</h1>
           <p className="text-muted-foreground">
             Log in at <a href="/login" className="text-primary underline">/login</a> to set up your profile.
           </p>
@@ -43,7 +43,7 @@ const Index = () => {
         <section className="mb-8">
           <div>
             <div className="min-w-0">
-              <h1 className="text-3xl font-bold text-foreground">{profile.full_name || "Your Name"}</h1>
+              <h1 className="text-3xl font-bold text-heading">{profile.full_name || "Your Name"}</h1>
               {profile.title && <p className="mt-1 text-lg leading-tight text-muted-foreground">{profile.title}</p>}
             </div>
           </div>
@@ -55,7 +55,7 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">Contact</h2>
+              <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-heading">Contact</h2>
               <div className="flex flex-wrap gap-4 text-sm text-foreground/80">
                 {profile.email && (
                   <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-primary">
@@ -87,7 +87,7 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
                 <Share2 className="h-3.5 w-3.5" /> Social
               </h2>
               <div className="flex flex-wrap gap-4 text-sm text-foreground/80">
@@ -111,14 +111,14 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
                 <Briefcase className="h-3.5 w-3.5" /> Experience
               </h2>
               <div className="space-y-4">
                 {experiences.map((exp) => (
                   <div key={exp.id} className="border-l-2 border-border pl-4">
                     <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="text-sm font-semibold text-foreground">{exp.job_title}</h3>
+                      <h3 className="text-sm font-semibold text-heading">{exp.job_title}</h3>
                       <span className="shrink-0 text-xs text-muted-foreground">
                         {exp.start_date ? format(new Date(exp.start_date), "MMM yyyy") : ""}
                         {" — "}
@@ -139,13 +139,13 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
                 <GraduationCap className="h-3.5 w-3.5" /> Education
               </h2>
               <div className="space-y-3">
                 {degrees.map((edu) => (
                   <div key={edu.id} className="border-l-2 border-border pl-4">
-                    <h3 className="text-sm font-semibold text-foreground">{edu.degree}</h3>
+                    <h3 className="text-sm font-semibold text-heading">{edu.degree}</h3>
                     <p className="text-sm text-muted-foreground">
                       {edu.institution}
                       {edu.field && ` · ${edu.field}`}
@@ -163,13 +163,13 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
                 <Award className="h-3.5 w-3.5" /> Certificates
               </h2>
               <div className="space-y-3">
                 {certificates.map((cert) => (
                   <div key={cert.id} className="border-l-2 border-border pl-4">
-                    <h3 className="text-sm font-semibold text-foreground">{cert.degree}</h3>
+                    <h3 className="text-sm font-semibold text-heading">{cert.degree}</h3>
                     <p className="text-sm text-muted-foreground">
                       {cert.issuer}
                       {cert.issue_date && ` · ${format(new Date(cert.issue_date), "MMM yyyy")}`}
@@ -186,7 +186,7 @@ const Index = () => {
           <>
             <Separator className="my-6" />
             <section className="mb-8">
-              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
                 <Heart className="h-3.5 w-3.5" /> Hobbies
               </h2>
               <div className="flex flex-wrap gap-2">
@@ -204,7 +204,7 @@ const Index = () => {
         {/* Contact Form */}
         <Separator className="my-6" />
         <section className="mb-8">
-          <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
             <MessageSquare className="h-3.5 w-3.5" /> Get in touch
           </h2>
           <ContactForm />
