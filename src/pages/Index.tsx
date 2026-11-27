@@ -1,13 +1,11 @@
-import { useProfile, useWorkExperience, useEducation, useHobbies } from "@/hooks/usePortfolioData";
-import { Mail, Phone, MapPin, Linkedin, Github, Globe, Briefcase, GraduationCap, Award, Heart, Share2, MessageSquare } from "lucide-react";
+import { useProfile, useEducation, useHobbies } from "@/hooks/usePortfolioData";
+import { GraduationCap, Award, Heart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
-import ContactForm from "@/components/ContactForm";
 import SiteHeader from "@/components/SiteHeader";
 
 const Index = () => {
   const { data: profile, isLoading: profileLoading } = useProfile();
-  const { data: experiences = [] } = useWorkExperience();
   const { data: educationList = [] } = useEducation();
   const { data: hobbies = [] } = useHobbies();
 
@@ -49,90 +47,6 @@ const Index = () => {
           </div>
           {profile.bio && <div className="mt-3 prose prose-sm max-w-none text-foreground/80" dangerouslySetInnerHTML={{ __html: profile.bio }} />}
         </section>
-
-        {/* Contact */}
-        {(profile.email || profile.phone || profile.location || profile.website_url) && (
-          <>
-            <Separator className="my-6" />
-            <section className="mb-8">
-              <h2 className="mb-3 text-xs font-semibold uppercase tracking-wider text-heading">Contact</h2>
-              <div className="flex flex-wrap gap-4 text-sm text-foreground/80">
-                {profile.email && (
-                  <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-primary">
-                    <Mail className="h-3.5 w-3.5" /> {profile.email}
-                  </a>
-                )}
-                {profile.phone && (
-                  <span className="flex items-center gap-1.5">
-                    <Phone className="h-3.5 w-3.5" /> {profile.phone}
-                  </span>
-                )}
-                {profile.location && (
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="h-3.5 w-3.5" /> {profile.location}
-                  </span>
-                )}
-                {profile.website_url && (
-                  <a href={profile.website_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
-                    <Globe className="h-3.5 w-3.5" /> Website
-                  </a>
-                )}
-              </div>
-            </section>
-          </>
-        )}
-
-        {/* Social */}
-        {(profile.linkedin_url || profile.github_url) && (
-          <>
-            <Separator className="my-6" />
-            <section className="mb-8">
-              <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
-                <Share2 className="h-3.5 w-3.5" /> Social
-              </h2>
-              <div className="flex flex-wrap gap-4 text-sm text-foreground/80">
-                {profile.linkedin_url && (
-                  <a href={profile.linkedin_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
-                    <Linkedin className="h-3.5 w-3.5" /> LinkedIn
-                  </a>
-                )}
-                {profile.github_url && (
-                  <a href={profile.github_url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-primary">
-                    <Github className="h-3.5 w-3.5" /> GitHub
-                  </a>
-                )}
-              </div>
-            </section>
-          </>
-        )}
-
-        {/* Work Experience */}
-        {experiences.length > 0 && (
-          <>
-            <Separator className="my-6" />
-            <section className="mb-8">
-              <h2 className="mb-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
-                <Briefcase className="h-3.5 w-3.5" /> Experience
-              </h2>
-              <div className="space-y-4">
-                {experiences.map((exp) => (
-                  <div key={exp.id} className="border-l-2 border-border pl-4">
-                    <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="text-sm font-semibold text-heading">{exp.job_title}</h3>
-                      <span className="shrink-0 text-xs text-muted-foreground">
-                        {exp.start_date ? format(new Date(exp.start_date), "MMM yyyy") : ""}
-                        {" — "}
-                        {exp.is_current ? "Present" : exp.end_date ? format(new Date(exp.end_date), "MMM yyyy") : ""}
-                      </span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">{exp.company}</p>
-                    {exp.description && <div className="mt-1 prose prose-xs max-w-none text-foreground/70" dangerouslySetInnerHTML={{ __html: exp.description }} />}
-                  </div>
-                ))}
-              </div>
-            </section>
-          </>
-        )}
 
         {/* Education */}
         {degrees.length > 0 && (
@@ -201,14 +115,6 @@ const Index = () => {
           </>
         )}
 
-        {/* Contact Form */}
-        <Separator className="my-6" />
-        <section className="mb-8">
-          <h2 className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-heading">
-            <MessageSquare className="h-3.5 w-3.5" /> Get in touch
-          </h2>
-          <ContactForm />
-        </section>
       </div>
     </div>
   );

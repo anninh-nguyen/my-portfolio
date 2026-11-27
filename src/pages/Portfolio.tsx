@@ -8,7 +8,7 @@ function ProjectCard({ p }: { p: Tables<"projects"> }) {
       <div className="flex-1 p-4">
         <div className="flex items-start justify-between gap-3">
           <h3 className="text-base font-semibold uppercase leading-snug tracking-wide text-heading">{p.title}</h3>
-          {p.image_url && <img src={p.image_url} alt={p.title} className="h-16 w-16 shrink-0 rounded object-cover" />}
+          {p.image_url && <img src={p.image_url} alt={p.title} className="h-[83px] w-[83px] shrink-0 rounded object-cover" />}
         </div>
         {(p.role || p.client_location) && (
           <p className="mt-2 text-sm text-foreground/80">
