@@ -1,14 +1,16 @@
-# Move the contact form to its own "Contact" page
+# New Experience and Contact pages, bigger project images
 
 ## What changes
-- New page at `/contact` with the site cover and tabs, a "Get in touch" title, and the current contact form (same fields and the same check before sending).
-- The top tabs become: Profile | Portfolio | Contact.
-- The "Get in touch" form section is taken off the bottom of the Profile page. The Profile page keeps showing your email, phone, location and website.
-- In the admin area, you can still view and delete messages the same way as now.
+1. **Experience page** (`/experience`): the Experience list is moved off the Profile page, with the same layout as now.
+2. **Contact page** (`/contact`): the Contact information (email, phone, location, website), the Social links (LinkedIn, GitHub) and the "Get in touch" form are moved off the Profile page.
+3. **Top tabs**, in this order: Profile -> Experience -> Portfolio -> Contact.
+4. **Profile page** keeps your name, title, bio, Education, Certificates and Hobbies.
+5. **Portfolio**: each project image gets 30% bigger, from 64px to about 83px square.
 
 ## Technical details
-- Create `src/pages/Contact.tsx`, which renders `SiteHeader` plus `ContactForm` inside a `max-w-2xl` container. Titles use `text-heading`.
-- Add a `/contact` route in `src/App.tsx`.
-- Add a Contact `NavLink` in `src/components/SiteHeader.tsx`.
-- Remove the ContactForm section and the unused imports from `src/pages/Index.tsx`.
+- New pages `src/pages/Experience.tsx` and `src/pages/Contact.tsx`. Each one uses `SiteHeader` and the `max-w-2xl` container, and the titles use `text-heading`.
+- Add the `/experience` and `/contact` routes in `src/App.tsx`.
+- `SiteHeader`: add the NavLinks in the new order.
+- `Index.tsx`: remove the sections that moved and the unused imports.
+- `Portfolio.tsx`: change the image size from `h-16 w-16` to `h-[83px] w-[83px]`.
 - No changes to the backend.
