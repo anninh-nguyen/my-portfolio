@@ -1,3 +1,4 @@
+import { sanitizeHtml } from "@/lib/sanitize";
 import { useProfile, useEducation, useHobbies } from "@/hooks/usePortfolioData";
 import { GraduationCap, Award, Heart } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -45,7 +46,7 @@ const Index = () => {
               {profile.title && <p className="mt-1 text-lg leading-tight text-muted-foreground">{profile.title}</p>}
             </div>
           </div>
-          {profile.bio && <div className="mt-3 prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: profile.bio }} />}
+          {profile.bio && <div className="mt-3 prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHtml(profile.bio) }} />}
         </section>
 
         {/* Education */}

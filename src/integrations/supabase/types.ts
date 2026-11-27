@@ -256,6 +256,21 @@ export type Database = {
           },
         ]
       }
+      site_owner: {
+        Row: {
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       work_experience: {
         Row: {
           company: string

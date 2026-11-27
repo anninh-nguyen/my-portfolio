@@ -1,3 +1,4 @@
+import { sanitizeHtml } from "@/lib/sanitize";
 import SiteHeader from "@/components/SiteHeader";
 import { usePortfolios, useProjects } from "@/hooks/usePortfolioData";
 import type { Tables } from "@/integrations/supabase/types";
@@ -17,7 +18,7 @@ function ProjectCard({ p }: { p: Tables<"projects"> }) {
             {p.client_location && <>Client's location <span className="font-semibold text-primary">{p.client_location}</span></>}
           </p>
         )}
-        {p.description && <div className="prose prose-sm mt-2 max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: p.description }} />}
+        {p.description && <div className="prose prose-sm mt-2 max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHtml(p.description) }} />}
         {p.technologies && (
           <div className="mt-3 text-sm">
             <p className="font-semibold text-foreground">Technologies</p>
@@ -27,7 +28,7 @@ function ProjectCard({ p }: { p: Tables<"projects"> }) {
         {p.achievements && (
           <div className="mt-3 text-sm">
             <p className="font-semibold text-foreground">Achievement</p>
-            <div className="prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm prose-ul:list-none prose-ul:pl-0 [&_li]:relative [&_li]:pl-5 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:content-['➢']" dangerouslySetInnerHTML={{ __html: p.achievements }} />
+            <div className="prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm prose-ul:list-none prose-ul:pl-0 [&_li]:relative [&_li]:pl-5 [&_li]:before:absolute [&_li]:before:left-0 [&_li]:before:content-['➢']" dangerouslySetInnerHTML={{ __html: sanitizeHtml(p.achievements) }} />
           </div>
         )}
       </div>

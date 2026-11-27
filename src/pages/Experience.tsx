@@ -1,3 +1,4 @@
+import { sanitizeHtml } from "@/lib/sanitize";
 import { useWorkExperience } from "@/hooks/usePortfolioData";
 import { Briefcase } from "lucide-react";
 import { format } from "date-fns";
@@ -32,7 +33,7 @@ export default function Experience() {
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">{exp.company}</p>
-                    {exp.description && <div className="mt-1 prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: exp.description }} />}
+                    {exp.description && <div className="mt-1 prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: sanitizeHtml(exp.description) }} />}
                   </div>
                 ))}
               </div>

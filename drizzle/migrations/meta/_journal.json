@@ -22,6 +22,13 @@
       "when": 1795674571514,
       "tag": "0002_add_profile_cover",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1795762217168,
+      "tag": "0003_site_owner_lockdown",
+      "breakpoints": true
     }
   ]
 }
