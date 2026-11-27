@@ -16,7 +16,7 @@ export default function SiteHeader() {
         {cover && <img src={cover} alt="Cover" className="h-full w-full object-cover" />}
       </div>
       <nav className="sticky top-0 z-10 border-b border-border bg-background/90 backdrop-blur">
-        <div className="mx-auto flex max-w-4xl overflow-x-auto px-4">
+        <div className="mx-auto scrollbar-none flex max-w-4xl overflow-x-auto overflow-y-hidden px-4">
           <NavLink to="/" end className={tab}>Profile</NavLink>
           <NavLink to="/experience" className={tab}>Experience</NavLink>
           <NavLink to="/portfolio" className={tab}>Portfolio</NavLink>
