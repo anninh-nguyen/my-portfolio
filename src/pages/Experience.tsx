@@ -32,7 +32,7 @@ export default function Experience() {
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">{exp.company}</p>
-                    {exp.description && <div className="mt-1 prose prose-xs max-w-none text-foreground/70" dangerouslySetInnerHTML={{ __html: exp.description }} />}
+                    {exp.description && <div className="mt-1 prose prose-sm max-w-none text-sm text-foreground/80 [&_*]:text-sm" dangerouslySetInnerHTML={{ __html: exp.description }} />}
                   </div>
                 ))}
               </div>
