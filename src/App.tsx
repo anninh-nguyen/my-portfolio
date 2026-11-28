@@ -11,6 +11,7 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
+import ScrollIndicator from "@/components/ScrollIndicator";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollIndicator />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/portfolio" element={<Portfolio />} />
