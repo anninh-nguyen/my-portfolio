@@ -16,7 +16,7 @@ export function useWorkExperience() {
   return useQuery({
     queryKey: ["work_experience"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("work_experience").select("*").order("sort_order", { ascending: true });
+      const { data, error } = await supabase.from("work_experience").select("*").order("start_date", { ascending: false, nullsFirst: false }).order("sort_order", { ascending: true });
       if (error) throw error;
       return data ?? [];
     },
@@ -60,7 +60,7 @@ export function useProjects() {
   return useQuery({
     queryKey: ["projects"],
     queryFn: async () => {
-      const { data, error } = await supabase.from("projects").select("*").order("sort_order", { ascending: true });
+      const { data, error } = await supabase.from("projects").select("*").order("completed_date", { ascending: false, nullsFirst: false }).order("sort_order", { ascending: true });
       if (error) throw error;
       return data ?? [];
     },
